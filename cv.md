@@ -23,9 +23,29 @@ I am a backend developer and qa engineer. I want to upgrade my frontend skills t
 
 ## Code Example
 ```
-while (noSuccess) {
-    tryAgain();
-    if (Dead) break;
+function toCamelCase(str){
+  let res = '';
+  let mode = 'first'; // first, normal, camel  
+  
+  for (let i = 0; i < str.length; i++) {
+    if (mode == 'first') {
+      res += str[i];
+      mode = 'normal';
+      continue;
+    }
+    if (mode == 'normal') {
+      if ((str[i] == "_") || (str[i] == "-")) {
+        mode = 'camel';
+        continue;
+      }
+      res += str[i];
+    }
+    if (mode == 'camel') {
+      res += str[i].toUpperCase();
+      mode = 'normal';
+    }
+  }
+  return res;  
 }
 ```
 
